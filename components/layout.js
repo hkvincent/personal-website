@@ -41,14 +41,14 @@ export default function Layout({ children, description, titleSuffix }) {
           src="https://www.googletagmanager.com/gtag/js?id=G-7N5W44X0L3"
         ></script>
         <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-7N5W44X0L3');
-        `,
-          }}
+        //   dangerouslySetInnerHTML={{
+        //     __html: `
+        //     window.dataLayer = window.dataLayer || [];
+        //     function gtag(){dataLayer.push(arguments);}
+        //     gtag('js', new Date());
+        //     gtag('config', 'G-*****');
+        // `,
+        //   }}
         />
       </Head>
       <main className="mb-auto">
