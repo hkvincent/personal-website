@@ -36,10 +36,10 @@ export default function Layout({ children, description, titleSuffix }) {
         <title>
           {titleSuffix ? `${siteTitle} | ${titleSuffix}` : siteTitle}
         </title>
-        <script
+        {/* <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-7N5W44X0L3"
-        ></script>
+        ></script> */}
         <script
         //   dangerouslySetInnerHTML={{
         //     __html: `
