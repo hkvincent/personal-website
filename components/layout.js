@@ -118,12 +118,12 @@ export default function Layout({ children, description, titleSuffix }) {
           <a href="https://github.com/hkvincent" aria-label="GitHub">
             <FontAwesomeIcon icon={faGithub} className="w-6 mr-3" />
           </a>
-          <a
+          {/* <a
             href="https://www.linkedin.com/in/vincenthk/"
             aria-label="LinkedIn"
           >
             <FontAwesomeIcon icon={faLinkedin} className="w-6 text-blue-600" />
-          </a>
+          </a> */}
         </div>
         <p className="text-sm text-gray-500">2023 - Vincent Chan</p>
       </footer>
