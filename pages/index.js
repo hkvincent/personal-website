@@ -66,7 +66,7 @@ export default function Home() {
       <ul className="list-disc list-inside ml-3 mt-2">
         <li className="mt-2">
           <a
-            href="https://play.google.com/store/apps/details?id=com.CaioCoelho.moodJournal"
+            href="https://github.com/hkvincent"
             className="text-blue-600"
           >
             Vincent's Github
