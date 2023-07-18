@@ -44,6 +44,12 @@ export default function Home() {
             Chat App
           </a>{" "}
           (2017): This app is designed for chatting with other users and its backend uses services similar to Firebase.{" "}
+          <a
+            href="https://github.com/hkvincent/vchat"
+            className="text-blue-600"
+          >
+            Github Rep
+          </a>{" "}
         </li>
         <li className="mt-2">
           <a href="https://vseeworld.online/" className="text-blue-600">
