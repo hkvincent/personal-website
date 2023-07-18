@@ -26,8 +26,8 @@ export default function Home() {
           >
             pedometer App
           </a>{" "}
-          (2018): This app is designed to motivate users to walk more and level up their character within the app.
-          Additionally, users can engage in battles with other users, check rankings, and more.{" "}
+          (2018): This app motivates users to walk more and level up their in-app character. 
+                  It also allows them to participate in battles with other users, view rankings.{" "}
           <a
             href="https://github.com/hkvincent/vpeodometer"
             className="text-blue-600"
@@ -43,18 +43,18 @@ export default function Home() {
           >
             Chat App
           </a>{" "}
-          (2017): This app is designed for chatting with other users, and its backend is using the services similar as Firebase.{" "}
+          (2017): This app is designed for chatting with other users and its backend uses services similar to Firebase.{" "}
         </li>
         <li className="mt-2">
           <a href="https://vmdb-pink.vercel.app/" className="text-blue-600">
             the IMDB clone
           </a>{" "}
-          (2023): the webiste created with NextJS.13 (App Route)
+          (2023): The website was created using NextJS version 13 (App Route).{" "}
           <a
             href="https://github.com/hkvincent/vmdb"
             className="text-blue-600"
           >
-            GitHub Rep
+            Github Rep
           </a>{" "}
         </li>
 
@@ -71,7 +71,7 @@ export default function Home() {
           >
             Vincent's Github
           </a>{" "}
-          Please see more in my GITHUB
+          Check out Vincent's Github for more information.
         </li>
       </ul>
     </Layout>
