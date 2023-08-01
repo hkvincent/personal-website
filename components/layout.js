@@ -67,7 +67,7 @@ export default function Layout({ children, description, titleSuffix }) {
                 Vincent Chan
               </Link>
             </h1>
-            <p className="text-gray-600 pt-3">Software Engineer</p>
+            <p className="text-gray-600 pt-3">Software Developer</p>
             <p className="text-gray-600">Hong Kong</p>
             <div className="inline-flex sm:block mt-2 sm:mt-0">
               <p className="sm:mt-5 mx-2 sm:mx-0 hover:underline text-xl">
