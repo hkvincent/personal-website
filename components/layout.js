@@ -6,7 +6,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import Obfuscate from "react-obfuscate";
-
+import Script from "next/script";
 import styles from "./layout.module.css";
 
 export const name = "Vincent Chan";
