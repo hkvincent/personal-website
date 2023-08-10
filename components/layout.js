@@ -36,20 +36,14 @@ export default function Layout({ children, description, titleSuffix }) {
         <title>
           {titleSuffix ? `${siteTitle} | ${titleSuffix}` : siteTitle}
         </title>
-        {/* <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-7N5W44X0L3"
-        ></script> */}
-        <script
-        //   dangerouslySetInnerHTML={{
-        //     __html: `
-        //     window.dataLayer = window.dataLayer || [];
-        //     function gtag(){dataLayer.push(arguments);}
-        //     gtag('js', new Date());
-        //     gtag('config', 'G-*****');
-        // `,
-        //   }}
-        />
+        {/* Google Analytics Script */}
+        <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-VHDNEZ3ZVV"></Script>
+        <Script id="google-analytics">{`window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-VHDNEZ3ZVV');`}
+        </Script>
+
       </Head>
       <main className="mb-auto">
         <div className="container mx-auto sm:grid grid-cols-1 sm:grid-cols-3 sm:mt-28 mt-10 gap-x-5 max-w-5xl mb-2">
