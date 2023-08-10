@@ -6,7 +6,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import Obfuscate from "react-obfuscate";
-import Script from "next/script";
+
 import styles from "./layout.module.css";
 
 export const name = "Vincent Chan";
@@ -36,14 +36,20 @@ export default function Layout({ children, description, titleSuffix }) {
         <title>
           {titleSuffix ? `${siteTitle} | ${titleSuffix}` : siteTitle}
         </title>
-        {/* Google Analytics Script */}
-        <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-VHDNEZ3ZVV"></Script>
-        <Script id="google-analytics">{`window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', 'G-VHDNEZ3ZVV');`}
-        </Script>
-
+         <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-VHDNEZ3ZVV"
+        ></script> 
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-VHDNEZ3ZVV');
+        `,
+          }}
+        />
       </Head>
       <main className="mb-auto">
         <div className="container mx-auto sm:grid grid-cols-1 sm:grid-cols-3 sm:mt-28 mt-10 gap-x-5 max-w-5xl mb-2">
