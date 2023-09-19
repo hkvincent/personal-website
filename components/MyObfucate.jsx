@@ -7,7 +7,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 const MyObfucate = ({ email }) => {
     return (
         <div>
-            <Obfuscate {...email}>
+            <Obfuscate email={email}>
                 <FontAwesomeIcon icon={faEnvelope} className="w-6 mr-3 text-2xl" />
             </Obfuscate>
         </div>
