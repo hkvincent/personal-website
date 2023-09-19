@@ -7,7 +7,6 @@ export async function GET(request) {
     if (!token || token !== process.env.ADMIN_TOKEN)
         return NextResponse.json({ error: "Not authorised" }, { status: 401 });
 
-        revalidatePath('/');
-
+    revalidatePath('/');
     return NextResponse.json({ revalidated: true, now: Date.now() });
 }
