@@ -40,7 +40,6 @@ export const generateMetadata = (props) => {
     };
 }
 
-
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
