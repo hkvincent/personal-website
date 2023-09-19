@@ -6,9 +6,11 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
   content: [
     './app/**/*.{jsx,tsx}',
     './components/**/*.{jsx,tsx}',
+  ],
+  plugins: [
+    require('@tailwindcss/typography'),
   ],
 };

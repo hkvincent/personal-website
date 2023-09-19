@@ -15,7 +15,7 @@ const page = async () => {
     var htmlData = marked(personal[0].body, { headerIds: false, mangle: false });
 
     return (
-        <div className="marked-content" dangerouslySetInnerHTML={{ __html: htmlData }} />
+        <article className="prose" dangerouslySetInnerHTML={{ __html: htmlData }} />
     );
 };
 
