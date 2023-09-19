@@ -6,14 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import '../styles/global.css'
 
-// export const metadata = {
-//     title: {
-//         default: "Vincent CHAN",
-//         template: '%s | Vincent CHAN',
-//     },
-
-// };
-
 export const generateMetadata = (props) => {
     return {
         title: {
