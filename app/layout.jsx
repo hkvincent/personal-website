@@ -15,7 +15,6 @@ import '../styles/global.css'
 // };
 
 export const generateMetadata = (props) => {
-    console.log(props);
     return {
         title: {
             template: "%s | Vincent CHAN",
