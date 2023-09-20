@@ -5,18 +5,19 @@ import MyObfuscate from '../components/MyObfucate';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import '../styles/global.css'
-
-export const generateMetadata = (props) => {
+import directus, { getPersonalData } from "../utils/directus";
+export const generateMetadata = async (props) => {
+    const personal = await getPersonalData();
     return {
         title: {
-            template: "%s | Vincent CHAN",
-            default: "Vincent CHAN",
+            template: `%s | ${personal[0].name}`,
+            default: `${personal[0].name}`,
         },
         description: "Vincent CHAN's personal website.",
         openGraph: {
-            title: "Vincent CHAN'",
+            title: `${personal[0].name}`,
             description: "Vincent CHAN's personal website.",
-            siteName: "Vincent CHAN",
+            siteName: `${personal[0].name}`,
             images: [
                 {
                     url: "/avatar.jpg",
@@ -32,7 +33,9 @@ export const generateMetadata = (props) => {
     };
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+    const personal = await getPersonalData();
+
     return (
         <html lang="en">
             <head>
@@ -65,11 +68,11 @@ export default function RootLayout({ children }) {
                                 />
                                 <h1 className="text-3xl pt-3 font-extrabold">
                                     <Link href="/">
-                                        Vincent Chan
+                                        {personal[0].name}
                                     </Link>
                                 </h1>
-                                <p className="text-gray-600 pt-3">Software Developer</p>
-                                <p className="text-gray-600">Hong Kong</p>
+                                <p className="text-gray-600 pt-3">{personal[0].position}</p>
+                                <p className="text-gray-600">{personal[0].location}</p>
                                 <div className="inline-flex sm:block mt-2 sm:mt-0">
                                     <p className="sm:mt-5 mx-2 sm:mx-0 hover:underline text-xl">
                                         <Link href="/">
