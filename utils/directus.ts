@@ -14,4 +14,15 @@ export const getPersonalData = async () => {
   return personal.data;
 };
 
+export const getPersonalDataWithPage = async () => {
+  const personal = await directus.items("personal").readByQuery({
+    fields: [
+      "*", // Select all fields
+      "pages.title",
+      "pages.path"
+    ],
+  });
+  return personal.data;
+};
+
 export default directus;

@@ -5,7 +5,7 @@ import MyObfuscate from '../components/MyObfucate';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import '../styles/global.css'
-import directus, { getPersonalData } from "../utils/directus";
+import directus, { getPersonalData, getPersonalDataWithPage } from "../utils/directus";
 export const generateMetadata = async (props) => {
     const personal = await getPersonalData();
     return {
@@ -34,8 +34,8 @@ export const generateMetadata = async (props) => {
 }
 
 export default async function RootLayout({ children }) {
-    const personal = await getPersonalData();
-
+    const personal = await getPersonalDataWithPage();
+    // console.log(personal[0].pages);
     return (
         <html lang="en">
             <head>
@@ -60,7 +60,7 @@ export default async function RootLayout({ children }) {
                         <div className="container mx-auto sm:grid grid-cols-1 sm:grid-cols-3 sm:mt-28 mt-10 gap-x-5 max-w-5xl mb-2">
                             <div className="side-panel sm:text-right text-center pb-5 mb-5 sm:mb-0 border-b sm:border-b-0 sm:pr-8 sm:border-r sm:pl-4 border-gray-200">
                                 <Image
-                                    src="/avatar.jpg"
+                                    src={`${process.env.NEXT_PUBLIC_ASSETS_URL}${personal[0].avatar}`}
                                     width="100"
                                     height="100"
                                     className="rounded-full ml-auto"
@@ -73,17 +73,14 @@ export default async function RootLayout({ children }) {
                                 </h1>
                                 <p className="text-gray-600 pt-3">{personal[0].position}</p>
                                 <p className="text-gray-600">{personal[0].location}</p>
-                                <div className="inline-flex sm:block mt-2 sm:mt-0">
-                                    <p className="sm:mt-5 mx-2 sm:mx-0 hover:underline text-xl">
-                                        <Link href="/">
-                                            About
-                                        </Link>
-                                    </p>
-                                    <p className="sm:mt-3 mx-4 sm:mx-0 hover:underline text-xl">
-                                        <Link href="/resume">
-                                            Resume
-                                        </Link>
-                                    </p>
+                                <div className="inline-flex sm:block mt-2 sm:mt-8">
+                                    {personal[0].pages.map((page) => (
+                                        <p className="sm:mt-2 mx-2 sm:mx-0 hover:underline text-xl">
+                                            <Link href={page.path}>
+                                                {page.title}
+                                            </Link>
+                                        </p>)
+                                    )}
                                 </div>
                                 <div className="hidden sm:flex justify-center sm:justify-end mt-5">
                                     <MyObfuscate email="hkvincentchan@gmail.com" />
