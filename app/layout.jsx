@@ -73,7 +73,7 @@ export default async function RootLayout({ children }) {
                                 </h1>
                                 <p className="text-gray-600 pt-3">{personal[0].position}</p>
                                 <p className="text-gray-600">{personal[0].location}</p>
-                                <div className="inline-flex sm:block mt-2 sm:mt-8">
+                                <div className="inline-flex sm:block mt-2 sm:mt-6">
                                     {personal[0].pages.map((page) => (
                                         <p className="sm:mt-2 mx-2 sm:mx-0 hover:underline text-xl">
                                             <Link href={page.path}>
