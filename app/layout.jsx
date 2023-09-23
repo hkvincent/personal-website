@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as brandIcons from "@fortawesome/free-brands-svg-icons";
 import * as solidIcons from "@fortawesome/free-solid-svg-icons";
 import '../styles/global.css'
-import directus, { getPersonalData,getPersonalDataWithPage } from "../utils/directus";
+import directus, { getPersonalData, getPersonalDataWithPage } from "../utils/directus";
 export const generateMetadata = async (props) => {
     const personal = await getPersonalData();
     return {
@@ -105,10 +105,9 @@ export default async function RootLayout({ children }) {
                     </main>
 
                     <footer className="text-center pb-3 mt-5">
-                    <div className="sm:hidden flex justify-center sm:justify-end mt-5">
+                        <div className="sm:hidden flex justify-center sm:justify-end mt-5">
                             {
                                 personal[0].icons.map((icon) => (
-                                    console.log(icon),
                                     <MyObfuscate key={icon.link} link={icon.link} icon={iconCollections[icon.iconfrom][icon.icon]} isEmail={icon.isEmail} />
                                 ))
                             }
