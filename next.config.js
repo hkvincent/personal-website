@@ -13,9 +13,6 @@ const nextConfig = {
         ],
         domains: ["blog-directus.zeabur.app", "images.unsplash.com"],
     },
-    experimental: {
-        serverActions: true,
-    },
 }
 
 module.exports = nextConfig
