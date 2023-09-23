@@ -3,9 +3,16 @@ import Link from 'next/link';
 import React from "react";
 import MyObfuscate from '../components/MyObfucate';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import * as brandIcons from "@fortawesome/free-brands-svg-icons";
+import * as solidIcons from "@fortawesome/free-solid-svg-icons";
 import '../styles/global.css'
 import directus, { getPersonalData, getPersonalDataWithPage } from "../utils/directus";
+
+const iconCollections = {
+    brandIcons: brandIcons,
+    solidIcons: solidIcons,
+};
+
 export const generateMetadata = async (props) => {
     const personal = await getPersonalData();
     return {
@@ -35,7 +42,7 @@ export const generateMetadata = async (props) => {
 
 export default async function RootLayout({ children }) {
     const personal = await getPersonalDataWithPage();
-    // console.log(personal[0].pages);
+    //console.log(personal[0]);
     return (
         <html lang="en">
             <head>
@@ -75,7 +82,7 @@ export default async function RootLayout({ children }) {
                                 <p className="text-gray-600">{personal[0].location}</p>
                                 <div className="inline-flex sm:block mt-2 sm:mt-6">
                                     {personal[0].pages.map((page) => (
-                                        <p className="sm:mt-2 mx-2 sm:mx-0 hover:underline text-xl">
+                                        <p className="sm:mt-2 mx-2 sm:mx-0 hover:underline text-xl" key={page.title}>
                                             <Link href={page.path}>
                                                 {page.title}
                                             </Link>
@@ -83,10 +90,15 @@ export default async function RootLayout({ children }) {
                                     )}
                                 </div>
                                 <div className="hidden sm:flex justify-center sm:justify-end mt-5">
-                                    <MyObfuscate email="hkvincentchan@gmail.com" />
+                                    {
+                                        personal[0].icons.map((icon) => (
+                                            <MyObfuscate key={icon.link} link={icon.link} icon={iconCollections[icon.iconfrom][icon.icon]} isEmail={icon.isEmail} />
+                                        ))
+                                    }
+                                    {/* <MyObfuscate email="hkvincentchan@gmail.com" />
                                     <a href="https://github.com/hkvincent" aria-label="GitHub">
-                                        <FontAwesomeIcon icon={faGithub} className="text-2xl w-6 mr-3" />
-                                    </a>
+                                        <FontAwesomeIcon icon={icons.faGithub} className="text-2xl w-6 mr-3" />
+                                    </a> */}
                                 </div>
                             </div>
                             <div className="content-panel col-span-2 sm:mx-4 mx-5">
@@ -97,12 +109,14 @@ export default async function RootLayout({ children }) {
 
                     <footer className="text-center pb-3 mt-5">
                         <div className="sm:hidden flex justify-center sm:justify-end mt-5">
-                            <MyObfuscate email="vincent.chan@gmail.com" />
-                            <a href="https://github.com/hkvincent" aria-label="GitHub">
-                                <FontAwesomeIcon icon={faGithub} className="text-2xl w-6 mr-3" />
-                            </a>
+                            {
+                                personal[0].icons.map((icon) => (
+                                    console.log(icon),
+                                    <MyObfuscate key={icon.link} link={icon.link} icon={iconCollections[icon.iconfrom][icon.icon]} isEmail={icon.isEmail} />
+                                ))
+                            }
                         </div>
-                        <p className="text-sm text-gray-500">2023 - Vincent Chan</p>
+                        <p className="text-sm text-gray-500">{personal[0].footer}</p>
                     </footer>
                 </div>
             </body>

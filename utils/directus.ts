@@ -19,7 +19,8 @@ export const getPersonalDataWithPage = async () => {
     fields: [
       "*", // Select all fields
       "pages.title",
-      "pages.path"
+      "pages.path",
+      "icons.*",
     ],
   });
   return personal.data;
