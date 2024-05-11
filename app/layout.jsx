@@ -43,6 +43,7 @@ export default async function RootLayout({ children }) {
     return (
         <html lang="en">
             <head>
+                <script defer data-domain="vincentchan.info" src="https://analyst.zeabur.app/js/script.js"></script>
                 <script
                     async
                     src="https://www.googletagmanager.com/gtag/js?id=G-VHDNEZ3ZVV"
