@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from 'next/link';
 
 export const metadata = {
     title: 'Resume',
@@ -9,9 +10,9 @@ export default function Home() {
         <>
             <h2 className="text-4xl font-bold mb-3">Resume</h2>
             <p>
-                Pedding <a href="/" className="underline">
+                Pedding <Link href="/" className="underline">
                     PDF Version
-                </a>.
+                </Link>.
             </p>
             <div className="max-w-xl">
                 <Image

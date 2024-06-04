@@ -1,12 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from "react";
-import MyObfuscate from '../components/MyObfucate';
+import MyObfuscate from '../components/my-obfucate';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as brandIcons from "@fortawesome/free-brands-svg-icons";
 import * as solidIcons from "@fortawesome/free-solid-svg-icons";
 import '../styles/global.css'
 import directus, { getPersonalData, getPersonalDataWithPage } from "../utils/directus";
+import Script from 'next/script';
+import PageLink from '../components/path-link';
+
+
 export const generateMetadata = async (props) => {
     const personal = await getPersonalData();
     return {
@@ -34,7 +38,7 @@ export const generateMetadata = async (props) => {
     };
 }
 
-export default async function RootLayout({ children }) {
+export default async function RootLayout({ children, params }) {
     const iconCollections = {
         brandIcons: brandIcons,
         solidIcons: solidIcons,
@@ -43,11 +47,11 @@ export default async function RootLayout({ children }) {
     return (
         <html lang="en">
             <head>
-                <script defer data-domain="vincentchan.info" src="https://analyst.zeabur.app/js/script.js"></script>
-                <script
+                <Script defer data-domain="vincentchan.info" src="https://analyst.zeabur.app/js/script.js"></Script>
+                <Script
                     async
                     src="https://www.googletagmanager.com/gtag/js?id=G-VHDNEZ3ZVV"
-                ></script>
+                ></Script>
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `
@@ -60,9 +64,9 @@ export default async function RootLayout({ children }) {
             </head>
             <body>
                 <div className="h-screen flex flex-col ">
-                    {/*  */}
                     <main className="mb-auto">
-                        <div className="container mx-auto sm:grid grid-cols-1 sm:grid-cols-3 sm:mt-28 mt-10 gap-x-5 max-w-5xl mb-2">
+                        {/* <div className="container mx-auto sm:grid grid-cols-1 sm:grid-cols-3 sm:mt-28 mt-10 gap-x-5 mb-2 max-w-5xl"> */}
+                        <div className="container mx-auto grid-cols-1 sm:grid sm:grid-cols-3 sm:mt-12 mt-6 gap-x-5 mb-2">
                             <div className="side-panel sm:text-right text-center pb-5 mb-5 sm:mb-0 border-b sm:border-b-0 sm:pr-8 sm:border-r sm:pl-4 border-gray-200">
                                 <Image
                                     src={`${process.env.NEXT_PUBLIC_ASSETS_URL}${personal[0].avatar}`}
@@ -79,13 +83,7 @@ export default async function RootLayout({ children }) {
                                 <p className="text-gray-600 pt-3">{personal[0].position}</p>
                                 <p className="text-gray-600">{personal[0].location}</p>
                                 <div className="inline-flex sm:block mt-2 sm:mt-6">
-                                    {personal[0].pages.map((page) => (
-                                        <p className="sm:mt-2 mx-2 sm:mx-0 hover:underline text-xl" key={page.title}>
-                                            <Link href={page.path}>
-                                                {page.title}
-                                            </Link>
-                                        </p>)
-                                    )}
+                                    <PageLink pagePaths={personal[0].pages} />
                                 </div>
                                 <div className="hidden sm:flex justify-center sm:justify-end mt-5">
                                     {

@@ -1,4 +1,4 @@
-import Layout, { siteTitle, name } from "../components/layout";
+import Layout, { siteTitle, name } from "../_page_components/layout";
 import Image from "next/image";
 import Link from "next/link";
 
