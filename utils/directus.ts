@@ -1,29 +1,26 @@
-import { Directus } from "@directus/sdk";
-const directus = new Directus(process.env.NEXT_PUBLIC_API_URL as string, {
-  auth: {
-    staticToken: process.env.ADMIN_TOKEN as string,
-  },
-});
+import { createDirectus, rest, readItems, staticToken } from '@directus/sdk';
+
+const client = createDirectus(process.env.NEXT_PUBLIC_API_URL).with(rest()).with(staticToken(process.env.ADMIN_TOKEN))
 
 export const getPersonalData = async () => {
-  const personal = await directus.items("personal").readByQuery({
+  const personal = await client.request(readItems('personal', {
     fields: [
-      "*", // Select all fields
+      "*"
     ],
-  });
-  return personal.data;
+  }))
+  return personal;
 };
 
 export const getPersonalDataWithPage = async () => {
-  const personal = await directus.items("personal").readByQuery({
+  const personal = await client.request(readItems("personal", {
     fields: [
       "*", // Select all fields
       "pages.title",
       "pages.path",
       "icons.*",
     ],
-  });
-  return personal.data;
+  }));
+  return personal;
 };
 
-export default directus;
+export default client;

@@ -1,5 +1,6 @@
 import React from 'react';
-import directus, { getPersonalData } from "../utils/directus";
+import directus, { getPersonalData } from "@/utils/directus";
+
 import { marked } from 'marked';
 import '../styles/global.css'
 const page = async () => {

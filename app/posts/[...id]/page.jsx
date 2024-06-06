@@ -1,4 +1,7 @@
 import React from 'react';
+import { readItems } from '@directus/sdk';
+import client from "@/utils/directus";
+
 
 const page = () => {
     return (
