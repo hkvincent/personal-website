@@ -28,7 +28,7 @@ import { marked } from 'marked';
 import { formatFullDate, formatHalfDate } from '@/utils/helper';
 
 
-export function PostDetail({ title, author, date, content, readTime }) {
+export async function PostDetail({ title, author, date, content, readTime }) {
   var htmlData = marked(content, { headerIds: false, mangle: false });
 
   return (
