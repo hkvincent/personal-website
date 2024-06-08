@@ -33,7 +33,7 @@ const page = async ({ params }) => {
   // console.timeEnd('getPostDetail');
 
   // console.time('getReadingTime');
-  // const readTime = getReadingTime(post.body);
+  const readTime = getReadingTime(post.body);
   // console.timeEnd('getReadingTime');
 
   return (
