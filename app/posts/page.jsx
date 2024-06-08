@@ -24,6 +24,8 @@ const page = async () => {
     }
 
     const posts = await getPostData();
+    // wait for 3 seconds
+    // await new Promise(resolve => setTimeout(resolve, 3000));
 
     return (
         <>
