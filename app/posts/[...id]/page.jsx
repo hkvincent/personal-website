@@ -28,8 +28,8 @@ const page = async ({ params }) => {
 
   // cal getPostDetail function time consuming
   // console.time('getPostDetail');
-  // const posts = await getPostDetail();
-  // const post = posts[0];
+  const posts = await getPostDetail();
+  const post = posts[0];
   // console.timeEnd('getPostDetail');
 
   // console.time('getReadingTime');
