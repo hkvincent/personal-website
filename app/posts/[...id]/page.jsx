@@ -27,7 +27,7 @@ const page = async ({ params }) => {
     return post;
   }
   // wait for 3 seconds
-  await new Promise(resolve => setTimeout(resolve, 3000));
+  // await new Promise(resolve => setTimeout(resolve, 3000));
 
   const posts = await getPostDetail();
   const post = posts[0];
