@@ -27,7 +27,6 @@ const page = async () => {
 
     return (
         <>
-            <h1 className="text-4xl font-bold mb-3">Posts</h1>
             <div className='mt-4'>
                 {posts.map((post) => (
                     <div key={post.id} className="mb-3">
