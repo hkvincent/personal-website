@@ -2,10 +2,7 @@ import React, { Suspense } from 'react';
 import { readItems, readItem } from '@directus/sdk';
 import client from "@/utils/directus";
 import { PostDetail } from '@/components/component/post-detail';
-import { formatFullDate, getReadingTime } from '@/utils/helper';
-import PostSkeleton from '@/components/skeleton-loading';
-
-
+import { getReadingTime } from '@/utils/helper';
 
 export const metadata = {
   title: 'Post Detail',
@@ -29,13 +26,23 @@ const page = async ({ params }) => {
   // wait for 3 seconds
   // await new Promise(resolve => setTimeout(resolve, 3000));
 
-  const posts = await getPostDetail();
-  const post = posts[0];
+  // cal getPostDetail function time consuming
+  // console.time('getPostDetail');
+  // const posts = await getPostDetail();
+  // const post = posts[0];
+  // console.timeEnd('getPostDetail');
+
+  // console.time('getReadingTime');
+  // const readTime = getReadingTime(post.body);
+  // console.timeEnd('getReadingTime');
+
   return (
     <div className='flex justify-start'>
-      <PostDetail title={post.title} author={post.user_created.first_name + " " + post.user_created.last_name} date={post.date_created} readTime={getReadingTime(post.body)}
-        content={post.body}
-      />
+      <Suspense fallback={<p>loading.....</p>}>
+        <PostDetail title={post.title} author={post.user_created.first_name + " " + post.user_created.last_name} date={post.date_created} readTime={readTime}
+          content={post.body}
+        />
+      </Suspense>
     </div>
   );
 };
