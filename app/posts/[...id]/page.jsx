@@ -13,7 +13,6 @@ export const metadata = {
 
 const page = async ({ params }) => {
   async function getPostDetail() {
-    console.log(params)
     const post = await client.request(readItems("personal_blog", {
       fields: [
         "*",
@@ -27,15 +26,16 @@ const page = async ({ params }) => {
     }));
     return post;
   }
+  // wait for 3 seconds
+  await new Promise(resolve => setTimeout(resolve, 3000));
+
   const posts = await getPostDetail();
   const post = posts[0];
   return (
     <div className='flex justify-start'>
-      <Suspense fallback={<PostSkeleton />}>
-        <PostDetail title={post.title} author={post.user_created.first_name + " " + post.user_created.last_name} date={post.date_created} readTime={getReadingTime(post.body)}
-          content={post.body}
-        />
-      </Suspense>
+      <PostDetail title={post.title} author={post.user_created.first_name + " " + post.user_created.last_name} date={post.date_created} readTime={getReadingTime(post.body)}
+        content={post.body}
+      />
     </div>
   );
 };
