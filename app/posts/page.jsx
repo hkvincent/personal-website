@@ -3,6 +3,7 @@ import client from "@/utils/directus";
 import { readItems } from '@directus/sdk';
 import { getRelativeDate } from '@/utils/helper';
 import Link from 'next/link';
+import { formatFullDate } from '@/utils/helper';
 export const metadata = {
     title: 'Posts',
 };
@@ -23,11 +24,6 @@ const page = async () => {
     }
 
     const posts = await getPostData();
-    const formatFullDate = (dateString) => {
-        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-        return new Date(dateString).toLocaleDateString(undefined, options);
-    };
-
 
     return (
         <>
