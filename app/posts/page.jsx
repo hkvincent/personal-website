@@ -7,6 +7,7 @@ export const metadata = {
     title: 'Posts',
 };
 
+export const revalidate = 60;
 
 const page = async () => {
     async function getPostData() {
@@ -22,6 +23,12 @@ const page = async () => {
     }
 
     const posts = await getPostData();
+    const formatFullDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    };
+
+
     return (
         <>
             <h1 className="text-4xl font-bold mb-3">Posts</h1>
@@ -32,7 +39,7 @@ const page = async () => {
                             <Link href={`/posts/${post.slug}`} className=' hover:underline underline-offset-auto'>
                                 <h2 className="text-2xl font-bold">{post.title}</h2>
                             </Link>
-                            <p className="text-gray-500">{getRelativeDate(post.date_created)}</p>
+                            <p className="text-gray-500" title={formatFullDate(post.date_created)}>{getRelativeDate(post.date_created)}</p>
                         </div>
                         <p>{post.description}</p>
                     </div>

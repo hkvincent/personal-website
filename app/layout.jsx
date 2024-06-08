@@ -2,11 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from "react";
 import MyObfuscate from '../components/my-obfucate';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as brandIcons from "@fortawesome/free-brands-svg-icons";
 import * as solidIcons from "@fortawesome/free-solid-svg-icons";
 import '../styles/global.css'
-import directus, { getPersonalData, getPersonalDataWithPage } from "../utils/directus";
+import { getPersonalData, getPersonalDataWithPage } from "../utils/directus";
 import Script from 'next/script';
 import PageLink from '../components/path-link';
 

@@ -3,7 +3,7 @@ import React from 'react';
 import Obfuscate from "react-obfuscate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const MyObfucate = ({ link, icon, isEmail }) => {
+const MyObfucate = ({ link, icon, isEmail = false }) => {
     if (!isEmail) {
         return (
             <a href={link} aria-label="GitHub">
