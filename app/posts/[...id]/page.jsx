@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { readItems, readItem } from '@directus/sdk';
+import { readItems, clearCache } from '@directus/sdk';
 import client from "@/utils/directus";
 import { PostDetail } from '@/components/component/post-detail';
 import { getReadingTime } from '@/utils/helper';
@@ -10,19 +10,19 @@ export const metadata = {
 
 const page = async ({ params }) => {
   async function getPostDetail() {
-    const post = await client.request(readItems("personal_blog", {
-      fields: [
-        "*",
-        {
-          user_created: ['id', 'first_name', 'last_name'],
-        },
-      ],
-      filter: {
-        slug: {
-          _eq: params.id[0]
-        }
-      }
-    }));
+    // const post = await client.request(readItems("personal_blog", {
+    //   fields: [
+    //     "*",
+    //     {
+    //       user_created: ['id', 'first_name', 'last_name'],
+    //     },
+    //   ],
+
+    // }));
+
+    // using fetch https://blog-directus.zeabur.app/items/personal_blog?access_token=kMyt4I21Ko8FLSe9vSp3gMaTXGwxZLQU&filter={ "slug": { "_eq": "ai-agent-rag" }}
+    const post = await fetch(`${process.env.NEXT_PUBLIC_API_URL}items/personal_blog?access_token=${process.env.ADMIN_TOKEN}&filter={ "slug": { "_eq": "${params.id}" }}`)
+
     return post;
   }
   // wait for 3 seconds
@@ -31,7 +31,8 @@ const page = async ({ params }) => {
   // cal getPostDetail function time consuming
   // console.time('getPostDetail');
   const posts = await getPostDetail();
-  const post = posts[0];
+  const postJson = await posts.json();
+  const post = postJson.data[0]
   // console.timeEnd('getPostDetail');
 
   // console.time('getReadingTime');
