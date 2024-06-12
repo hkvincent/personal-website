@@ -17,8 +17,10 @@ const page = async ({ params }) => {
           user_created: ['id', 'first_name', 'last_name'],
         },
       ],
-      where: {
-        slug: params.id
+      filter: {
+        slug: {
+          _eq: params.id[0]
+        }
       }
     }));
     return post;

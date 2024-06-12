@@ -18,7 +18,7 @@ const page = async () => {
         "title",
         "date_created",
         "description",
-      ],
+      ], sort: "-date_created"
     }));
     return posts;
   }
