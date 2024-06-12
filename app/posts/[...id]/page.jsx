@@ -21,7 +21,7 @@ const page = async ({ params }) => {
     // }));
 
     // using fetch https://blog-directus.zeabur.app/items/personal_blog?access_token=kMyt4I21Ko8FLSe9vSp3gMaTXGwxZLQU&filter={ "slug": { "_eq": "ai-agent-rag" }}
-    const post = await fetch(`${process.env.NEXT_PUBLIC_API_URL}items/personal_blog?access_token=${process.env.ADMIN_TOKEN}&filter={ "slug": { "_eq": "${params.id}" }}`)
+    const post = await fetch(`${process.env.NEXT_PUBLIC_API_URL}items/personal_blog?access_token=${process.env.ADMIN_TOKEN}&filter={ "slug": { "_eq": "${params.id}" }}&fields[]=*&fields[]=user_created.id&fields[]=user_created.first_name&fields[]=user_created.last_name`)
 
     return post;
   }
@@ -32,7 +32,7 @@ const page = async ({ params }) => {
   // console.time('getPostDetail');
   const posts = await getPostDetail();
   const postJson = await posts.json();
-  const post = postJson.data[0]
+  const post = postJson.data[0];
   // console.timeEnd('getPostDetail');
 
   // console.time('getReadingTime');
