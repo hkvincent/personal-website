@@ -3,7 +3,7 @@ import readingTime from "reading-time";
 
 
 export const getReadingTime = (text: string) => {
-    const minute = readingTime(text ?? "0").minutes;
+    const minute = readingTime(text ?? "0", { wordsPerMinute: 100 }).minutes;
     // Floor to 1 decimal place
     const minutesRounded = Math.floor(minute);
     if (minutesRounded === 1 || minutesRounded === 0) {
