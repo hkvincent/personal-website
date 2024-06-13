@@ -4,6 +4,8 @@ import { readItems } from '@directus/sdk';
 import { getRelativeDate } from '@/utils/helper';
 import Link from 'next/link';
 import { formatFullDate } from '@/utils/helper';
+import PostListing from '@/components/post-listing';
+
 export const metadata = {
   title: 'Posts',
 };
@@ -17,6 +19,7 @@ const page = async () => {
         "slug",
         "title",
         "date_created",
+        "cover",
         "description",
       ], sort: "-date_created"
     }));
@@ -28,22 +31,28 @@ const page = async () => {
   // await new Promise(resolve => setTimeout(resolve, 3000));
 
   return (
-    <>
-      <div className='mt-4'>
-        {posts.map((post) => (
-          <div key={post.id} className="mb-3">
-            <div className='flex items-end gap-4'>
-              <Link href={`/posts/${post.slug}`} className=' hover:underline underline-offset-auto'>
-                <h2 className="text-2xl font-bold">{post.title}</h2>
-              </Link>
-              <p className="text-gray-500" title={formatFullDate(post.date_created)}>{getRelativeDate(post.date_created)}</p>
-            </div>
-            <p>{post.description}</p>
-          </div>
-        ))}
-      </div>
-    </>
+    // <PostListingNoStyle posts={posts} />
+    <PostListing posts={posts} />
   );
 };
 
 export default page;
+
+function PostListingNoStyle({ posts }) {
+  console.log(posts);
+  return <>
+    <div className='mt-4'>
+      {posts.map((post) => (
+        <div key={post.id} className="mb-3">
+          <div className='flex items-end gap-4'>
+            <Link href={`/posts/${post.slug}`} className=' hover:underline underline-offset-auto'>
+              <h2 className="text-2xl font-bold">{post.title}</h2>
+            </Link>
+            <p className="text-gray-500" title={formatFullDate(post.date_created)}>{getRelativeDate(post.date_created)}</p>
+          </div>
+          <p>{post.description}</p>
+        </div>
+      ))}
+    </div>
+  </>;
+}
