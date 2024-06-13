@@ -15,7 +15,7 @@ export const getReadingTime = (text: string) => {
 
 
 export const getRelativeDate = (date: string, locale?: string) => {
-    return DateTime.fromISO(date).setLocale(locale ?? 'hk').toRelative();
+    return DateTime.fromISO(date).setLocale(locale ?? 'en-US').toRelative();
 };
 
 
@@ -27,8 +27,11 @@ export const formatFullDate = (dateString) => {
         day: 'numeric',
         hour: '2-digit',
         minute: '2-digit',
+        timeZone: 'Asia/Hong_Kong'  // Set the timezone to Hong Kong Time
     };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+    console.log(dateString);
+    console.log(new Date(dateString).toLocaleDateString("en", options));
+    return new Date(dateString).toLocaleDateString("en", options);
 };
 
 
@@ -38,5 +41,6 @@ export const formatHalfDate = (dateString) => {
         month: 'long',
         day: 'numeric',
     };
+    console.log(dateString);
     return new Date(dateString).toLocaleDateString(undefined, options);
 };
