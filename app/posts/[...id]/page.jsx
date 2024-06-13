@@ -3,6 +3,7 @@ import { readItems, clearCache } from '@directus/sdk';
 import client from "@/utils/directus";
 import { PostDetail } from '@/components/component/post-detail';
 import { getReadingTime } from '@/utils/helper';
+import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 export const metadata = {
   title: 'Post Detail',
@@ -42,6 +43,7 @@ const page = async ({ params }) => {
   return (
     <div className='flex justify-start'>
       <Suspense fallback={<p>loading.....</p>}>
+        <ScrollToTopButton />
         <PostDetail title={post.title} author={post.user_created.first_name + " " + post.user_created.last_name} date={post.date_created} readTime={readTime}
           content={post.body}
         />
