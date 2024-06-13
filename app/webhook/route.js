@@ -8,5 +8,6 @@ export async function GET(request) {
     return NextResponse.json({ error: "Not authorised" }, { status: 401 });
 
   revalidatePath('/');
+  revalidatePath('/posts');
   return NextResponse.json({ revalidated: true, now: Date.now() });
 }
