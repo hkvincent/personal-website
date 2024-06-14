@@ -23,7 +23,7 @@ export default function PostListing({ posts }) {
             </div>
             <div className="flex-1 space-y-2">
               <h2 className="text-xl font-bold hover:underline underline-offset-auto">
-                <Link href={`/posts/${post.slug}`} prefetch={false}>
+                <Link href={`/posts/${post.slug}`}>
                   {post.title}
                 </Link>
               </h2>
@@ -31,7 +31,7 @@ export default function PostListing({ posts }) {
                 <p className="text-gray-500" title={formatFullDate(post.date_created)}>{getRelativeDate(post.date_created)}</p>
               </div>
               <p className="text-gray-500 dark:text-gray-400">{post.description}</p>
-              <Link href={`/posts/${post.slug}`} className="text-primary-500 hover:text-primary-600 font-medium" prefetch={false}>
+              <Link href={`/posts/${post.slug}`} className="text-primary-500 hover:text-primary-600 font-medium">
                 Read More
               </Link>
             </div>
