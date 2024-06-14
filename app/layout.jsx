@@ -10,32 +10,32 @@ import Script from 'next/script';
 import PageLink from '../components/path-link';
 
 
-// export const generateMetadata = async (props) => {
-//   const personal = await getPersonalData();
-//   return {
-//     title: {
-//       template: `%s | ${personal[0].name}`,
-//       default: `${personal[0].name}`,
-//     },
-//     description: "Vincent CHAN's personal website.",
-//     openGraph: {
-//       title: `${personal[0].name}`,
-//       description: "Vincent CHAN's personal website.",
-//       siteName: `${personal[0].name}`,
-//       images: [
-//         {
-//           url: "/avatar.jpg",
-//           width: 1200,
-//           height: 628,
-//         },
-//       ],
-//       type: "website",
-//     },
-//     icons: {
-//       icon: "/favicon.ico",
-//     }
-//   };
-// }
+export const generateMetadata = async (props) => {
+  const personal = await getPersonalData();
+  return {
+    title: {
+      template: `%s | ${personal[0].name}`,
+      default: `${personal[0].name}`,
+    },
+    description: "Vincent CHAN's personal website.",
+    openGraph: {
+      title: `${personal[0].name}`,
+      description: "Vincent CHAN's personal website.",
+      siteName: `${personal[0].name}`,
+      images: [
+        {
+          url: "/avatar.jpg",
+          width: 1200,
+          height: 628,
+        },
+      ],
+      type: "website",
+    },
+    icons: {
+      icon: "/favicon.ico",
+    }
+  };
+}
 
 export default async function RootLayout({ children, params }) {
   const iconCollections = {
