@@ -5,9 +5,6 @@ import { PostDetail } from '@/components/component/post-detail';
 import { getReadingTime } from '@/utils/helper';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 
-export const metadata = {
-  title: 'Post Detail',
-};
 
 const page = async ({ params }) => {
   async function getPostDetail() {
