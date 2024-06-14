@@ -6,7 +6,7 @@ import { getReadingTime } from '@/utils/helper';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 export const metadata = {
-  title: 'Posts Detail',
+  title: 'Post Detail',
 };
 
 const page = async ({ params }) => {
