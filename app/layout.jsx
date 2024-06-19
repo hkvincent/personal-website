@@ -73,6 +73,7 @@ export default async function RootLayout({ children, params }) {
                   height="100"
                   className="rounded-full ml-auto"
                   quality="100"
+                  alt='avatar'
                 />
                 <h1 className="text-3xl pt-3 font-extrabold">
                   <Link href="/">

@@ -6,6 +6,7 @@
 import Link from "next/link"
 import { getRelativeDate } from '@/utils/helper';
 import { formatFullDate } from '@/utils/helper';
+import Image from "next/image";
 export default function PostListing({ posts }) {
   return (
     <div className="space-y-8 p-4 md:p-6 lg:p-8">
@@ -13,7 +14,7 @@ export default function PostListing({ posts }) {
         <>
           <article key={post.id} className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
             <div className="flex-shrink-0 w-full md:w-[200px] h-[150px] md:h-[120px] overflow-hidden rounded-lg">
-              <img
+              <Image
                 src={post.cover ? `${process.env.NEXT_PUBLIC_ASSETS_URL}${post.cover}` : "https://placehold.co/600x400?text=Post"}
                 alt="Post Thumbnail"
                 width={400}
