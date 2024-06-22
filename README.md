@@ -101,6 +101,7 @@ Vincent's personal website in [Next.js](https://nextjs.org/).
     └── utils
         ├── directus.ts
         └── helper.ts
+```
 ---
 
 ##  Getting Started
@@ -152,9 +153,8 @@ npm test
 
 ##  Project Roadmap
 
-- [X] `► INSERT-TASK-1`
-- [ ] `► INSERT-TASK-2`
-- [ ] `► ...`
+- [X] `► SEO`
+- [ ] `► Search Function for Posts`
 
 ---
 
