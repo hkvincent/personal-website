@@ -1,7 +1,7 @@
 Vincent's personal website in [Next.js](https://nextjs.org/).
 
 
-- using headless CMS
+- using headless CMS (directus)
 - using tailwindcss
 - using next.js
 
@@ -238,6 +238,7 @@ HTTP error 401 for prompt `features`
 ##  Getting Started
 
 ***Requirements***
+A headless CMS, here is directus
 
 Ensure you have the following dependencies installed on your system:
 
