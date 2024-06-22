@@ -11,7 +11,9 @@ Vincent's personal website in [Next.js](https://nextjs.org/).
 <p align="center">
   <img src="https://cdn-icons-png.flaticon.com/512/6295/6295417.png" width="100" />
 </p>
-
+<p align="center">
+    <h1 align="center">PERSONAL-WEBSITE</h1>
+</p>
 <p align="center">
 	<img src="https://img.shields.io/github/license/hkvincent/personal-website?style=flat&color=0080ff" alt="license">
 	<img src="https://img.shields.io/github/last-commit/hkvincent/personal-website?style=flat&logo=git&logoColor=white&color=0080ff" alt="last-commit">
@@ -48,17 +50,6 @@ Vincent's personal website in [Next.js](https://nextjs.org/).
 
 ---
 
-##  Overview
-
-HTTP error 401 for prompt `overview`
-
----
-
-##  Features
-
-HTTP error 401 for prompt `features`
-
----
 
 ##  Repository Structure
 
@@ -110,124 +101,6 @@ HTTP error 401 for prompt `features`
     └── utils
         ├── directus.ts
         └── helper.ts
-```
-
----
-
-##  Modules
-
-<details closed><summary>.</summary>
-
-| File                                                                                               | Summary                                        |
-| ---                                                                                                | ---                                            |
-| [jsconfig.json](https://github.com/hkvincent/personal-website/blob/master/jsconfig.json)           | HTTP error 401 for prompt `jsconfig.json`      |
-| [next.config.js](https://github.com/hkvincent/personal-website/blob/master/next.config.js)         | HTTP error 401 for prompt `next.config.js`     |
-| [components.json](https://github.com/hkvincent/personal-website/blob/master/components.json)       | HTTP error 401 for prompt `components.json`    |
-| [postcss.config.js](https://github.com/hkvincent/personal-website/blob/master/postcss.config.js)   | HTTP error 401 for prompt `postcss.config.js`  |
-| [package.json](https://github.com/hkvincent/personal-website/blob/master/package.json)             | HTTP error 401 for prompt `package.json`       |
-| [tailwind.config.js](https://github.com/hkvincent/personal-website/blob/master/tailwind.config.js) | HTTP error 401 for prompt `tailwind.config.js` |
-| [package-lock.json](https://github.com/hkvincent/personal-website/blob/master/package-lock.json)   | HTTP error 401 for prompt `package-lock.json`  |
-
-</details>
-
-<details closed><summary>styles</summary>
-
-| File                                                                                      | Summary                                       |
-| ---                                                                                       | ---                                           |
-| [global.css](https://github.com/hkvincent/personal-website/blob/master/styles/global.css) | HTTP error 401 for prompt `styles/global.css` |
-
-</details>
-
-<details closed><summary>utils</summary>
-
-| File                                                                                       | Summary                                       |
-| ---                                                                                        | ---                                           |
-| [helper.ts](https://github.com/hkvincent/personal-website/blob/master/utils/helper.ts)     | HTTP error 401 for prompt `utils/helper.ts`   |
-| [directus.ts](https://github.com/hkvincent/personal-website/blob/master/utils/directus.ts) | HTTP error 401 for prompt `utils/directus.ts` |
-
-</details>
-
-<details closed><summary>components</summary>
-
-| File                                                                                                                | Summary                                                      |
-| ---                                                                                                                 | ---                                                          |
-| [path-link.jsx](https://github.com/hkvincent/personal-website/blob/master/components/path-link.jsx)                 | HTTP error 401 for prompt `components/path-link.jsx`         |
-| [my-obfucate.jsx](https://github.com/hkvincent/personal-website/blob/master/components/my-obfucate.jsx)             | HTTP error 401 for prompt `components/my-obfucate.jsx`       |
-| [ScrollToTopButton.css](https://github.com/hkvincent/personal-website/blob/master/components/ScrollToTopButton.css) | HTTP error 401 for prompt `components/ScrollToTopButton.css` |
-| [ScrollToTopButton.jsx](https://github.com/hkvincent/personal-website/blob/master/components/ScrollToTopButton.jsx) | HTTP error 401 for prompt `components/ScrollToTopButton.jsx` |
-| [post-listing.jsx](https://github.com/hkvincent/personal-website/blob/master/components/post-listing.jsx)           | HTTP error 401 for prompt `components/post-listing.jsx`      |
-| [skeleton-loading.jsx](https://github.com/hkvincent/personal-website/blob/master/components/skeleton-loading.jsx)   | HTTP error 401 for prompt `components/skeleton-loading.jsx`  |
-
-</details>
-
-<details closed><summary>components.ui</summary>
-
-| File                                                                                             | Summary                                              |
-| ---                                                                                              | ---                                                  |
-| [avatar.jsx](https://github.com/hkvincent/personal-website/blob/master/components/ui/avatar.jsx) | HTTP error 401 for prompt `components/ui/avatar.jsx` |
-
-</details>
-
-<details closed><summary>components.component</summary>
-
-| File                                                                                                              | Summary                                                          |
-| ---                                                                                                               | ---                                                              |
-| [post-detail.jsx](https://github.com/hkvincent/personal-website/blob/master/components/component/post-detail.jsx) | HTTP error 401 for prompt `components/component/post-detail.jsx` |
-
-</details>
-
-<details closed><summary>lib</summary>
-
-| File                                                                               | Summary                                  |
-| ---                                                                                | ---                                      |
-| [utils.js](https://github.com/hkvincent/personal-website/blob/master/lib/utils.js) | HTTP error 401 for prompt `lib/utils.js` |
-
-</details>
-
-<details closed><summary>app</summary>
-
-| File                                                                                     | Summary                                     |
-| ---                                                                                      | ---                                         |
-| [loading.jsx](https://github.com/hkvincent/personal-website/blob/master/app/loading.jsx) | HTTP error 401 for prompt `app/loading.jsx` |
-| [page.jsx](https://github.com/hkvincent/personal-website/blob/master/app/page.jsx)       | HTTP error 401 for prompt `app/page.jsx`    |
-| [layout.jsx](https://github.com/hkvincent/personal-website/blob/master/app/layout.jsx)   | HTTP error 401 for prompt `app/layout.jsx`  |
-
-</details>
-
-<details closed><summary>app.resume</summary>
-
-| File                                                                                      | Summary                                         |
-| ---                                                                                       | ---                                             |
-| [page.jsx](https://github.com/hkvincent/personal-website/blob/master/app/resume/page.jsx) | HTTP error 401 for prompt `app/resume/page.jsx` |
-
-</details>
-
-<details closed><summary>app.posts</summary>
-
-| File                                                                                           | Summary                                           |
-| ---                                                                                            | ---                                               |
-| [loading.jsx](https://github.com/hkvincent/personal-website/blob/master/app/posts/loading.jsx) | HTTP error 401 for prompt `app/posts/loading.jsx` |
-| [page.jsx](https://github.com/hkvincent/personal-website/blob/master/app/posts/page.jsx)       | HTTP error 401 for prompt `app/posts/page.jsx`    |
-
-</details>
-
-<details closed><summary>app.posts.[id]</summary>
-
-| File                                                                                                | Summary                                                |
-| ---                                                                                                 | ---                                                    |
-| [loading.jsx](https://github.com/hkvincent/personal-website/blob/master/app/posts/[id]/loading.jsx) | HTTP error 401 for prompt `app/posts/[id]/loading.jsx` |
-| [page.jsx](https://github.com/hkvincent/personal-website/blob/master/app/posts/[id]/page.jsx)       | HTTP error 401 for prompt `app/posts/[id]/page.jsx`    |
-
-</details>
-
-<details closed><summary>app.webhook</summary>
-
-| File                                                                                       | Summary                                          |
-| ---                                                                                        | ---                                              |
-| [route.js](https://github.com/hkvincent/personal-website/blob/master/app/webhook/route.js) | HTTP error 401 for prompt `app/webhook/route.js` |
-
-</details>
-
 ---
 
 ##  Getting Started
