@@ -10,6 +10,11 @@ const nextConfig = {
                 hostname: "blog-directus.zeabur.app",
                 protocol: "https",
             },
+            {
+                // https://placehold.co
+                hostname: "placehold.co",
+                protocol: "https"
+            }
         ],
         domains: ["blog-directus.zeabur.app", "images.unsplash.com"],
     },

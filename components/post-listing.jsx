@@ -3,11 +3,12 @@
  * @see https://v0.dev/t/bqH7yPIg0ug
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
-import Link from "next/link"
+import { Link } from 'next-view-transitions'
 import { getRelativeDate } from '@/utils/helper';
 import { formatFullDate } from '@/utils/helper';
 import Image from "next/image";
 export default function PostListing({ posts }) {
+  
   return (
     <div className="space-y-8 p-4 md:p-6 lg:p-8">
       {posts.map((post) => (
