@@ -29,8 +29,7 @@ export const formatFullDate = (dateString) => {
         minute: '2-digit',
         timeZone: 'Asia/Hong_Kong'  // Set the timezone to Hong Kong Time
     };
-    console.log(dateString);
-    console.log(new Date(dateString).toLocaleDateString("en", options));
+
     return new Date(dateString).toLocaleDateString("en", options);
 };
 
@@ -41,6 +40,6 @@ export const formatHalfDate = (dateString) => {
         month: 'long',
         day: 'numeric',
     };
-    console.log(dateString);
-    return new Date(dateString).toLocaleDateString(undefined, options);
+
+    return new Date(dateString).toLocaleDateString("en", options);
 };
