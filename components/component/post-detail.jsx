@@ -33,22 +33,22 @@ export function PostDetail({ title, author, date, content, readTime }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImageSrc, setSelectedImageSrc] = useState('');
   const contentRef = useRef(null);
-  console.log(modalOpen);
+
   const toggleModal = () => {
     setModalOpen(prev => {
       return !prev;
     });
   };
+
   useEffect(() => {
     const images = contentRef.current.querySelectorAll('img');
-    const handleClick = (img) => {
-      console.log("Image clicked");
-      setSelectedImageSrc(img.src);
+    const handleClick = (event) => {
+      setSelectedImageSrc(event.target.src);
       toggleModal();
     };
 
     images.forEach(img => {
-      img.addEventListener('click', () => handleClick(img));
+      img.addEventListener('click', handleClick);
     });
 
     // Cleanup function to remove the event listeners
