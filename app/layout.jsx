@@ -51,7 +51,7 @@ export default async function RootLayout({ children, params }) {
     <ViewTransitions>
       <html lang="en">
         <head>
-          <Script defer data-domain="vincentchan.info" src="https://analyst.zeabur.app/js/script.js"></Script>
+          <Script async defer data-domain="vincentchan.info" src="https://analyst.zeabur.app/js/script.js"></Script>
           <Script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-VHDNEZ3ZVV"

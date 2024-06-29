@@ -1,8 +1,8 @@
 "use client";
 import React from 'react';
 import { useParams, usePathname, useSearchParams } from 'next/navigation';
-// import { Link } from 'next-view-transitions'
-import Link from 'next/link';
+import { Link } from 'next-view-transitions'
+// import Link from 'next/link';
 
 const PathLink = ({ pagePaths, searchParam = false }) => {
   const pathname = usePathname();
