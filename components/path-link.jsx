@@ -1,7 +1,8 @@
 "use client";
 import React from 'react';
 import { useParams, usePathname, useSearchParams } from 'next/navigation';
-import { Link } from 'next-view-transitions'
+// import { Link } from 'next-view-transitions'
+import Link from 'next/link';
 
 const PathLink = ({ pagePaths, searchParam = false }) => {
   const pathname = usePathname();
@@ -18,7 +19,7 @@ const PathLink = ({ pagePaths, searchParam = false }) => {
     <>
       {pagePaths.map((page) => (
         <p className="sm:mt-2 mx-2 sm:mx-0 hover:underline text-xl" key={page.title}>
-          <Link href={page.path} className={`${isActive(page.path) && "underline-offset-2 underline decoration-2 decoration-lime-800 rounded-lg"}`}>
+          <Link key={page.path} href={page.path} className={`${isActive(page.path) && "underline-offset-2 underline decoration-2 decoration-lime-800 rounded-lg"}`}>
             {page.title}
           </Link>
         </p>)

@@ -34,7 +34,7 @@ export default async function PostLayout({ children }) {
         <div className='ml-4'>
           <h2 className="text-lg font-bold mb-4">Categories</h2>
           <ul className="space-y-2 ml-2">
-            <Suspense fallback={<p>loading.....</p>}>
+            <Suspense key={pathMap.length} fallback={<p>loading.....</p>}>
               <PathLink pagePaths={pathMap} searchParam={true} />
             </Suspense>
           </ul>

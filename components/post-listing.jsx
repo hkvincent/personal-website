@@ -7,12 +7,52 @@ import { Link } from 'next-view-transitions'
 import { getRelativeDate } from '@/utils/helper';
 import { formatFullDate } from '@/utils/helper';
 import Image from "next/image";
-export default function PostListing({ posts }) {
-  
+import client from "@/utils/directus";
+import { readItems } from '@directus/sdk';
+import React from 'react';
+
+async function getPostData(searchParams) {
+  let posts = [];
+  if (searchParams.cate) {
+    posts = await client.request(readItems("personal_blog", {
+      fields: [
+        "slug",
+        "title",
+        "date_created",
+        "cover",
+        "description",
+      ],
+      filter: {
+        category: {
+          slug: searchParams.cate
+        }
+      },
+      sort: "-date_created"
+    }));
+  } else {
+    posts = await client.request(readItems("personal_blog", {
+      fields: [
+        "slug",
+        "title",
+        "date_created",
+        "cover",
+        "description",
+      ], sort: "-date_created"
+    }));
+  }
+  return posts;
+}
+
+export default async function PostListing({ searchParams }) {
+
+  console.time(`getPostData-${searchParams.cate}`);
+  const posts = await getPostData(searchParams);
+  console.timeEnd(`getPostData-${searchParams.cate}`);
+
   return (
     <div className="space-y-8 p-4 md:p-6 lg:p-8">
       {posts.map((post) => (
-        <>
+        <React.Fragment key={post.id}>
           <article key={post.id} className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
             <div className="flex-shrink-0 w-full md:w-[200px] h-[150px] md:h-[120px] overflow-hidden rounded-lg">
               <Image
@@ -39,7 +79,7 @@ export default function PostListing({ posts }) {
             </div>
           </article>
           <hr />
-        </>
+        </React.Fragment>
       ))}
 
       {/* <article className="flex flex-col md:flex-row items-start gap-4 md:gap-6">

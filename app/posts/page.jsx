@@ -1,64 +1,27 @@
 import React, { Suspense } from 'react';
-import client from "@/utils/directus";
-import { readItems } from '@directus/sdk';
 import { getRelativeDate } from '@/utils/helper';
 import Link from 'next/link';
 import { formatFullDate } from '@/utils/helper';
 import PostListing from '@/components/post-listing';
+import PostListSkeleton from '@/components/postlist-skelton';
 
 export const metadata = {
   title: 'Posts',
 };
-
 // export const revalidate = 60;
-
 const page = async ({ searchParams }) => {
-  async function getPostData() {
-    let posts = [];
-    if (searchParams.cate) {
-      posts = await client.request(readItems("personal_blog", {
-        fields: [
-          "slug",
-          "title",
-          "date_created",
-          "cover",
-          "description",
-        ],
-        filter: {
-          category: {
-            slug: searchParams.cate
-          }
-        },
-        sort: "-date_created"
-      }));
-    } else {
-      posts = await client.request(readItems("personal_blog", {
-        fields: [
-          "slug",
-          "title",
-          "date_created",
-          "cover",
-          "description",
-        ], sort: "-date_created"
-      }));
-    }
-
-    return posts;
-  }
-
-  const posts = await getPostData();
   // wait for 3 seconds
-  // await new Promise(resolve => setTimeout(resolve, 3000));
-
+  // await new Promise(resolve => setTimeout(resolve, 3000))
   return (
     // <PostListingNoStyle posts={posts} />
-    <Suspense fallback={<p>loading.....</p>}>
-      <PostListing posts={posts} />
+    <Suspense key={JSON.stringify(searchParams.cate)} fallback={<PostListSkeleton />}>
+      <PostListing key={JSON.stringify(searchParams.cate)} searchParams={searchParams} />
     </Suspense>
   );
 };
 
 export default page;
+
 
 function PostListingNoStyle({ posts }) {
   return <>

@@ -11,8 +11,11 @@ import { ViewTransitions } from 'next-view-transitions'
 import { Link } from 'next-view-transitions'
 import { Suspense } from 'react'
 
+
 export const generateMetadata = async (props) => {
+  console.time('generateMetadata-RootLayout');
   const personal = await getPersonalData();
+  console.timeEnd('generateMetadata-RootLayout');
   return {
     title: {
       template: `%s | ${personal[0].name}`,
@@ -31,12 +34,12 @@ export const generateMetadata = async (props) => {
         },
       ],
       type: "website",
-    },
-    icons: {
-      icon: "/favicon.ico",
+      icons: {
+        icon: "/favicon.ico",
+      }
     }
-  };
-}
+  }
+};
 
 export default async function RootLayout({ children, params }) {
   const iconCollections = {
