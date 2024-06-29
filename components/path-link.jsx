@@ -3,11 +3,14 @@ import React from 'react';
 import { useParams, usePathname, useSearchParams } from 'next/navigation';
 import { Link } from 'next-view-transitions'
 
-const PathLink = ({ pagePaths }) => {
+const PathLink = ({ pagePaths, searchParam = false }) => {
   const pathname = usePathname();
-
+  const searchParams = useSearchParams();
   // Helper function to determine if the link should be active
   const isActive = (path) => {
+    if (searchParam) {
+      return searchParams.get('cate') === path.split('=')[1] || (!searchParams.get('cate') && path === '/posts');
+    }
     return pathname === path || pathname.startsWith(`${path}/`);
   };
 

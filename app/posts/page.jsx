@@ -12,17 +12,37 @@ export const metadata = {
 
 export const revalidate = 60;
 
-const page = async () => {
+const page = async ({ searchParams }) => {
   async function getPostData() {
-    const posts = await client.request(readItems("personal_blog", {
-      fields: [
-        "slug",
-        "title",
-        "date_created",
-        "cover",
-        "description",
-      ], sort: "-date_created"
-    }));
+    let posts = [];
+    if (searchParams.cate) {
+      posts = await client.request(readItems("personal_blog", {
+        fields: [
+          "slug",
+          "title",
+          "date_created",
+          "cover",
+          "description",
+        ],
+        filter: {
+          category: {
+            slug: searchParams.cate
+          }
+        },
+        sort: "-date_created"
+      }));
+    } else {
+      posts = await client.request(readItems("personal_blog", {
+        fields: [
+          "slug",
+          "title",
+          "date_created",
+          "cover",
+          "description",
+        ], sort: "-date_created"
+      }));
+    }
+
     return posts;
   }
 
@@ -39,7 +59,6 @@ const page = async () => {
 export default page;
 
 function PostListingNoStyle({ posts }) {
-  console.log(posts);
   return <>
     <div className='mt-4'>
       {posts.map((post) => (
