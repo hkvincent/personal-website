@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import client from "@/utils/directus";
 import { readItems } from '@directus/sdk';
 import { getRelativeDate } from '@/utils/helper';
@@ -52,7 +52,9 @@ const page = async ({ searchParams }) => {
 
   return (
     // <PostListingNoStyle posts={posts} />
-    <PostListing posts={posts} />
+    <Suspense fallback={<p>loading.....</p>}>
+      <PostListing posts={posts} />
+    </Suspense>
   );
 };
 
