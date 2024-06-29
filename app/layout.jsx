@@ -9,6 +9,7 @@ import Script from 'next/script';
 import PageLink from '../components/path-link';
 import { ViewTransitions } from 'next-view-transitions'
 import { Link } from 'next-view-transitions'
+import { Suspense } from 'react'
 
 export const generateMetadata = async (props) => {
   const personal = await getPersonalData();
@@ -84,7 +85,9 @@ export default async function RootLayout({ children, params }) {
                   <p className="text-gray-600 pt-3">{personal[0].position}</p>
                   <p className="text-gray-600">{personal[0].location}</p>
                   <div className="inline-flex sm:block mt-2 sm:mt-6">
-                    <PageLink pagePaths={personal[0].pages} />
+                    <Suspense >
+                      <PageLink pagePaths={personal[0].pages} />
+                    </Suspense>
                   </div>
                   <div className="hidden sm:flex justify-center sm:justify-end mt-5">
                     {

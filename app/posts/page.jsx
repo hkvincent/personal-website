@@ -10,7 +10,7 @@ export const metadata = {
   title: 'Posts',
 };
 
-export const revalidate = 60;
+// export const revalidate = 60;
 
 const page = async ({ searchParams }) => {
   async function getPostData() {

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'next-view-transitions';
 import { readItems } from '@directus/sdk';
 import client from "@/utils/directus";
 import PathLink from '@/components/path-link';
-export default async function PostLayout({ children, params }) {
+import { Suspense } from 'react'
+
+export default async function PostLayout({ children }) {
   async function getCateDetail() {
     const categories = await client.request(readItems("personal_category", {
       fields: [
@@ -33,7 +34,9 @@ export default async function PostLayout({ children, params }) {
         <div className='ml-4'>
           <h2 className="text-lg font-bold mb-4">Categories</h2>
           <ul className="space-y-2 ml-2">
-            <PathLink pagePaths={pathMap} searchParam={true} />
+            <Suspense >
+              <PathLink pagePaths={pathMap} searchParam={true} />
+            </Suspense>
           </ul>
         </div>
       </aside>
