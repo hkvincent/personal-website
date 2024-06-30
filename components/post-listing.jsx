@@ -13,7 +13,7 @@ import React from 'react';
 
 async function getPostData(searchParams) {
   let posts = [];
-  if (searchParams.cate) {
+  if (searchParams.cate && searchParams.cate !== "all") {
     posts = await client.request(readItems("personal_blog", {
       fields: [
         "slug",

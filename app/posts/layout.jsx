@@ -19,11 +19,11 @@ export default async function PostLayout({ children }) {
 
   const cateResult = await getCateDetail();
   const pathMap = cateResult.map((item) => {
-    item.path = `/posts?cate=${item.slug}`;
+    item.path = `/posts/?cate=${item.slug}`;
     return item;
   });
   // add / at the first of the path
-  pathMap.unshift({ title: 'All', path: '/posts' });
+  pathMap.unshift({ title: 'All', path: '/posts/?cate=all' });
 
   return (
     <div className='flex flex-col md:flex-row'>

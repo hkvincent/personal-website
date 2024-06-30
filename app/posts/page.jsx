@@ -15,7 +15,7 @@ const page = async ({ searchParams }) => {
   return (
     // <PostListingNoStyle posts={posts} />
     <Suspense key={JSON.stringify(searchParams.cate)} fallback={<PostListSkeleton />}>
-      <PostListing key={JSON.stringify(searchParams.cate)} searchParams={searchParams} />
+      <PostListing searchParams={searchParams} />
     </Suspense>
   );
 };
