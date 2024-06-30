@@ -10,7 +10,7 @@ export const getPersonalData = unstable_cache(async () => {
     ],
   }))
   return personal;
-}, ["get-personal-data"], { revalidate: 1800 });
+}, ["get-personal-data"], { tags: ["personal-data"], revalidate: 1800 });
 
 export const getPersonalDataWithPage = async () => {
   const personal = await client.request(readItems("personal", {
