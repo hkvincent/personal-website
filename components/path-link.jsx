@@ -14,7 +14,6 @@ const PathLink = ({ pagePaths, searchParam = false }) => {
     }
     return pathname === path || pathname.startsWith(`${path}/`);
   };
-  console.log('pathname', pagePaths);
   return (
     <>
       {pagePaths.map((page) => (

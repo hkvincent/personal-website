@@ -10,9 +10,8 @@ export default function SearchBar() {
   const pathName = usePathname();
   if (pathName.split('/')[2]) return null;
 
-
   return (
-    <OramaCloud endpoint='https://cloud.orama.run/v1/indexes/www-vincentchan-top-hjali6' apiKey='F37bKrbHd5rBiM0Ns0wXWq382GPMI7Pr'>
+    <OramaCloud endpoint='https://cloud.orama.run/v1/indexes/posts-p3svnw' apiKey='3A4dS138cybwL8GYys4iYq7Y4fKA1GWb'>
       <SearchContainer />
     </OramaCloud>
   )
@@ -65,7 +64,7 @@ function SearchContainer() {
           <ul className="list-disc pl-5">
             {results.hits.map((hit) => (
               <li key={hit.id} className="mb-2">
-                <Link href={hit.document.path} className="text-blue-500">
+                <Link href={`/posts/${hit.document.slug}`} className="text-blue-500">
                   {hit.document.title}
                 </Link>
               </li>
