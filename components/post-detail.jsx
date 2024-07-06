@@ -67,7 +67,7 @@ export function PostDetail({ title, author, date, content, readTime }) {
   var htmlData = marked(content, { renderer, headerIds: false, mangle: false });
 
   return (
-    <div className="max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-3xl px-4 sm:px-6 lg:px-8 py-4">
       <ImageModal src={selectedImageSrc} isOpen={modalOpen} onClose={toggleModal} />
       <article className="prose prose-gray mx-auto dark:prose-invert">
         <div className="space-y-2 not-prose">

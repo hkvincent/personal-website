@@ -3,6 +3,7 @@ import { readItems } from '@directus/sdk';
 import client from "@/utils/directus";
 import PathLink from '@/components/path-link';
 import { Suspense } from 'react'
+import SearchBar from '@/components/search-bar';
 
 export default async function PostLayout({ children }) {
   async function getCateDetail() {
@@ -28,6 +29,7 @@ export default async function PostLayout({ children }) {
   return (
     <div className='flex flex-col md:flex-row'>
       <div className='w-5/6 p-4'>
+        <SearchBar />
         {children}
       </div>
       <aside className="w-1/6 p-4 md:border-l">

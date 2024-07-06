@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { readItems, clearCache } from '@directus/sdk';
 import client from "@/utils/directus";
-import { PostDetail } from '@/components/component/post-detail';
+import { PostDetail } from '@/components/post-detail';
 import { getReadingTime } from '@/utils/helper';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 
