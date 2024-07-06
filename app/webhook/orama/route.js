@@ -11,8 +11,9 @@ export async function GET(request) {
       "slug",
       "title",
       "date_created",
-      "cover",
+      "id",
       "description",
+      "body"
     ],
     sort: "-date_created"
   }));
