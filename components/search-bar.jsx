@@ -17,18 +17,11 @@ export default function SearchBar() {
   )
 }
 
-
-
 function SearchContainer() {
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const containerRef = useRef(null);
-
-  const { results, error } = useSearch({
-    term: debouncedSearchTerm,
-    limit: 5
-  });
 
   useEffect(() => {
     const handler = debounce((value) => {
@@ -62,7 +55,6 @@ function SearchContainer() {
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -77,7 +69,23 @@ function SearchContainer() {
         onChange={handleInputChange}
         className="w-full p-2 mb-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      {isDropdownVisible && results && results.hits.length > 0 && (
+      {debouncedSearchTerm.length > 4 && isDropdownVisible && (
+        <SearchResult term={debouncedSearchTerm} />
+      )}
+    </div>
+  );
+}
+
+
+function SearchResult({ term }) {
+  const { results, error } = useSearch({
+    term,
+    limit: 5
+  });
+
+  return (
+    <>
+      {results && results.hits.length > 0 && (
         <div className="absolute top-full left-0 right-0 p-4 bg-white border border-gray-300 rounded shadow-lg z-10">
           <ul className="list-disc pl-5">
             {results.hits.map((hit) => (
@@ -90,14 +98,16 @@ function SearchContainer() {
           </ul>
         </div>
       )}
-      {isDropdownVisible && searchTerm && !results?.hits.length && (
+      {term && results && results.hits.length === 0 && (
         <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-white border border-gray-300 rounded shadow-lg z-10">
           <div className="text-gray-500">No results found</div>
         </div>
       )}
       {error && (
-        <div className="text-red-500">Error: {error.message}</div>
+        <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-white border border-gray-300 rounded shadow-lg z-10 text-red-500">
+          Error: {error.message}
+        </div>
       )}
-    </div>
+    </>
   );
 }
