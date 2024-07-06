@@ -1,6 +1,6 @@
-import { revalidatePath, revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 import client from "@/utils/directus";
+import { readItems } from '@directus/sdk';
 
 export async function GET(request) {
   const token = request.nextUrl.searchParams.get("token");
