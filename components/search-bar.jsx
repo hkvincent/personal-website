@@ -91,7 +91,9 @@ function SearchResult({ term }) {
             {results.hits.map((hit) => (
               <li key={hit.id} className="mb-2">
                 <Link href={`/posts/${hit.document.slug}`} className="text-blue-500">
-                  {hit.document.title}
+                  <span className="text-blue-500 hover:underline hover:text-blue-900 transition duration-200 cursor-pointer">
+                    {hit.document.title}
+                  </span>
                 </Link>
               </li>
             ))}
