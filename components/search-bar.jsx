@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { OramaCloud, useSearch } from '@oramacloud/client/react'
 import { usePathname } from 'next/navigation';
 import { Link } from 'next-view-transitions';
@@ -18,29 +18,31 @@ export default function SearchBar() {
 }
 
 
+
 function SearchContainer() {
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const containerRef = useRef(null);
 
   const { results, error } = useSearch({
     term: debouncedSearchTerm,
     limit: 5
   });
 
-  // console.log(results);
-
   useEffect(() => {
     const handler = debounce((value) => {
       if (value.length > 4) {
         setDebouncedSearchTerm(value);
+        setIsDropdownVisible(true);
       } else {
         setDebouncedSearchTerm('');
+        setIsDropdownVisible(false);
       }
     }, 300);
 
     handler(searchTerm);
 
-    // Cleanup function to cancel debounce in case of component unmount
     return () => {
       handler.cancel();
     };
@@ -50,8 +52,24 @@ function SearchContainer() {
     setSearchTerm(event.target.value);
   };
 
+  const handleClickOutside = (event) => {
+    if (containerRef.current && !containerRef.current.contains(event.target)) {
+      setIsDropdownVisible(false);
+    } else if (containerRef.current && containerRef.current.contains(event.target)) {
+      setIsDropdownVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="relative w-full max-w-lg mx-auto">
+    <div className="relative w-full max-w-lg mx-auto" ref={containerRef}>
       <input
         type="text"
         placeholder="Enter search keyword..."
@@ -59,8 +77,8 @@ function SearchContainer() {
         onChange={handleInputChange}
         className="w-full p-2 mb-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      {searchTerm && results && results.hits.length > 0 && (
-        <div className="absolute top-full left-0 right-0  p-4 bg-white border border-gray-300 rounded shadow-lg z-10">
+      {isDropdownVisible && results && results.hits.length > 0 && (
+        <div className="absolute top-full left-0 right-0 p-4 bg-white border border-gray-300 rounded shadow-lg z-10">
           <ul className="list-disc pl-5">
             {results.hits.map((hit) => (
               <li key={hit.id} className="mb-2">
@@ -72,7 +90,7 @@ function SearchContainer() {
           </ul>
         </div>
       )}
-      {searchTerm && !results?.hits.length && (
+      {isDropdownVisible && searchTerm && !results?.hits.length && (
         <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-white border border-gray-300 rounded shadow-lg z-10">
           <div className="text-gray-500">No results found</div>
         </div>
