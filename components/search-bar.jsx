@@ -69,9 +69,9 @@ function SearchContainer() {
         onChange={handleInputChange}
         className="w-full p-2 mb-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      {debouncedSearchTerm.length > 4 && isDropdownVisible && (
-        <SearchResult term={debouncedSearchTerm} />
-      )}
+      {debouncedSearchTerm.length > 4 && isDropdownVisible ?
+        (<div key="search"> <SearchResult term={debouncedSearchTerm} /> </div>)
+        : (<div className=' hidden' key="search"> <SearchResult term={debouncedSearchTerm} /></div>)}
     </div>
   );
 }
