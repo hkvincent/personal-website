@@ -57,7 +57,7 @@ function SearchContainer() {
         placeholder="Enter search keyword..."
         value={searchTerm}
         onChange={handleInputChange}
-        className="w-full p-2 mb-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full p-2 mb-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       {searchTerm && results && results.hits.length > 0 && (
         <div className="absolute top-full left-0 right-0  p-4 bg-white border border-gray-300 rounded shadow-lg z-10">
