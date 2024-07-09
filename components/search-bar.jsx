@@ -1,12 +1,12 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react';
-import { OramaCloud, useSearch } from '@oramacloud/client/react'
+import { OramaCloud, useSearch } from '@oramacloud/client/react';
 import { usePathname } from 'next/navigation';
 import { Link } from 'next-view-transitions';
 import { debounce } from 'lodash';
+import { FaSearch } from 'react-icons/fa'; // Importing the magnifier icon
 
 export default function SearchBar() {
-
   const pathName = usePathname();
   if (pathName.split('/')[2]) return null;
 
@@ -14,7 +14,7 @@ export default function SearchBar() {
     <OramaCloud endpoint='https://cloud.orama.run/v1/indexes/posts-p3svnw' apiKey='3A4dS138cybwL8GYys4iYq7Y4fKA1GWb'>
       <SearchContainer />
     </OramaCloud>
-  )
+  );
 }
 
 function SearchContainer() {
@@ -22,6 +22,7 @@ function SearchContainer() {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const containerRef = useRef(null);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     const handler = debounce((value) => {
@@ -60,22 +61,45 @@ function SearchContainer() {
     };
   }, []);
 
+  // Adding the shortcut key event listener
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.ctrlKey && event.key === 'k') {
+        event.preventDefault();
+        setIsDropdownVisible(true);
+        inputRef.current.focus();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="relative w-full max-w-lg mx-auto" ref={containerRef}>
-      <input
-        type="text"
-        placeholder="Enter search keyword..."
-        value={searchTerm}
-        onChange={handleInputChange}
-        className="w-full p-2 mb-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
+      <div className="flex items-center border border-gray-300 rounded focus-within:ring-2 focus-within:ring-blue-500">
+        <FaSearch className="ml-2 text-gray-500" />
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchTerm}
+          onChange={handleInputChange}
+          ref={inputRef}
+          className="w-full p-2 bg-transparent focus:outline-none"
+        />
+        <div className="px-2 flex items-center">
+          <kbd className="bg-gray-200 text-gray-700 px-1 rounded">Ctrl</kbd>
+          <span className="mx-1 text-gray-500">+</span>
+          <kbd className="bg-gray-200 text-gray-700 px-1 rounded">K</kbd>
+        </div>
+      </div>
       {debouncedSearchTerm.length > 4 && isDropdownVisible ?
         (<div key="search"> <SearchResult term={debouncedSearchTerm} /> </div>)
-        : (<div className=' hidden' key="search"> <SearchResult term={debouncedSearchTerm} /></div>)}
+        : (<div className='hidden' key="search"> <SearchResult term={debouncedSearchTerm} /></div>)}
     </div>
   );
 }
-
 
 function SearchResult({ term }) {
   const { results, error } = useSearch({
