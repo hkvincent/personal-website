@@ -68,6 +68,10 @@ function SearchContainer() {
         event.preventDefault();
         setIsDropdownVisible(true);
         inputRef.current.focus();
+      } else if (event.key === 'Escape') {
+        event.preventDefault();
+        setIsDropdownVisible(false);
+        inputRef.current.blur();
       }
     };
     document.addEventListener('keydown', handleKeyDown);
@@ -110,7 +114,7 @@ function SearchResult({ term }) {
   return (
     <>
       {results && results.hits.length > 0 && (
-        <div className="absolute top-full left-0 right-0 p-4 bg-white border border-gray-300 rounded shadow-lg z-10">
+        <div className="absolute top-full left-0 right-0 p-4 mt-1 bg-white border border-gray-300 rounded shadow-lg z-10">
           <ul className="list-disc pl-5">
             {results.hits.map((hit) => (
               <li key={hit.id} className="mb-2">
