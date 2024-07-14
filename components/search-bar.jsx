@@ -82,7 +82,7 @@ function SearchContainer() {
 
   return (
     <div className="relative w-full max-w-lg mx-auto" ref={containerRef}>
-      <div className="flex items-center border border-gray-300 rounded focus-within:ring-2 focus-within:ring-blue-500">
+      <div className="flex items-center border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
         <FaSearch className="ml-2 text-gray-500" />
         <input
           type="text"
